@@ -5,7 +5,6 @@ This guide will help you set up our multi-container application locally.
 ### Prerequisites
 - Docker
 - Docker Compose
-git@github.com:amehmood1990/kaboodle.git
 ### Steps to Run
 1. Clone the repository.
 2. Install Docker and Docker Compose.
