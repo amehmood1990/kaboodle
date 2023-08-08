@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  kevents:
+    build:
+      context: ./packages/kevents
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ./packages/api
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: kaboodle
+      DB_USER: postgres
+      DB_PASSWORD: examplePassword
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: examplePassword
+      POSTGRES_DB: kaboodle
+
+volumes:
+  postgres_data:
+    driver: local

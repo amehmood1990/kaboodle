@@ -1,0 +1,95 @@
+/* StatusLegend.scss */
+
+.status-box {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.description {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.status-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.status-list {
+  margin-bottom: 10px; /* Increased spacing between each status */
+  max-width: 500px;
+  position: relative;
+  gap: 14px;
+  background: #61dafb;
+  display: grid;
+  grid-auto-columns: auto 1fr;
+}
+
+.list-chip {
+  margin-right: 10px;
+  height: 100%;
+  width: 190px;
+  background: #00cc66;
+}
+
+/* Dot chip styles */
+.dot-chip {
+  background: #61dafb;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: red;
+  position: absolute;
+  top: 3px;
+}
+
+/* Label chip styles */
+.label-chip {
+  padding: 5px 10px; /* Increased padding for better appearance */
+  //border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-transform: uppercase;
+  background: #61dafb;
+  position: absolute;
+  top: 3px;
+}
+
+/* Status-specific styles */
+.dot-chip.pending {
+  background-color: #ffcc00; /* Yellow */
+}
+
+.dot-chip.in-progress {
+  background-color: #ff9900; /* Orange */
+}
+
+.dot-chip.completed {
+  background-color: #00cc66; /* Green */
+}
+
+.label-chip.pending {
+  background-color: #ffcc00; /* Yellow */
+  color: black;
+}
+
+.label-chip.in-progress {
+  background-color: #ff9900; /* Orange */
+  color: white;
+}
+
+.label-chip.completed {
+  background-color: #00cc66; /* Green */
+  color: white;
+}
+
+.status-description {
+  /* Limit the width and enable text wrapping */
+  max-width: 500px; /* Adjust the value as needed */
+  overflow-wrap: break-word;
+}

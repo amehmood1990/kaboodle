@@ -1,0 +1,20 @@
+# Node.js and TypeScript
+node_modules/
+.idea
+build/
+*.log
+*.js.map
+
+# IDE and editor files
+.vscode/
+.idea/
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# Logs
+log/
+
+# Temporary files
+*.tmp
