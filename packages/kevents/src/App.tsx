@@ -1,7 +1,12 @@
 import React from "react";
+import {Route, Routes} from "react-router-dom";
 import {Container, styled} from "@mui/material";
+import Navbar from "./components/Navbar/Navbar";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import LandingPage from "./pages/LandingPage/LandingPage";
 import {useAuth} from "./context/login";
-import StatusLegend from "./components/Modal/StatusLegend";
+import UserEvents from "./pages/Events";
 
 const RootContainer = styled(Container)(({theme}) => ({
     paddingTop: theme.spacing(3),
@@ -11,32 +16,23 @@ const RootContainer = styled(Container)(({theme}) => ({
 
 const App = () => {
     const {user, logout} = useAuth();
-    const statuses: any = [
-        {
-            status: 'Pending',
-            description:
-                'Waiting for approval from the department manager and the project team. This might take a few days due to the ongoing workload and review process. Fingers crossed for a quick response!',
-        },
-        {
-            status: 'In Progress',
-            description:
-                'Working on the task and making steady progress. Weve encountered a few challenges, but our team is dedicated to resolving them to deliver the best results.',
-        },
-        {
-            status: 'Completed',
-            description:
-                'Task finished successfully. All deliverables have been met, and the final product is ready for review. Its been a great team effort, and were looking forward to the next project!',
-        },
-    ];
-
-
     return (
         <div>
-            <StatusLegend
-                type="dot"
-                description="Task Statuses:"
-                statuses={statuses}
-            />
+            <Navbar user={user || {loggedIn: false, username: null}} logout={logout}/>
+            <RootContainer maxWidth="lg">
+                <Routes>
+                    <Route path="/" element={<LandingPage/>}/>
+                    <Route path="/events" element={<UserEvents/>}/>
+                    {
+                        !user?.loggedIn && (
+                            <>
+                                <Route path="/login" element={<Login/>}/>
+                                <Route path="/register" element={<Register/>}/>
+                            </>
+                        )
+                    }
+                </Routes>
+            </RootContainer>
         </div>
 
     );
